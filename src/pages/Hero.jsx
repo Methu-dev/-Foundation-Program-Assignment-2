@@ -1,3 +1,4 @@
+import { BiSolidCameraMovie } from "react-icons/bi";
 import { Link } from "react-router";
 
 const Hero = () => {
@@ -29,7 +30,9 @@ const Hero = () => {
           to="/movies"
           className="inline-block rounded-lg bg-yellow-400 px-7 py-3.5 text-base font-bold text-gray-950 shadow-lg transition duration-300 hover:bg-yellow-300 hover:shadow-yellow-400/30 sm:px-8 sm:py-4 sm:text-lg"
         >
-          Explore Movies 🎬
+          <span className="flex items-center gap-2">
+            Explore Movies <BiSolidCameraMovie />
+          </span>
         </Link>
       </div>
     </section>

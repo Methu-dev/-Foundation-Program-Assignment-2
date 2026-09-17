@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import MoviesCard from "../component/MoviesCard";
+import MovieDetailsModal from "../component/MovieDetails";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const handleSearch = async () => {
     if (!search.trim()) {
@@ -80,9 +82,20 @@ export default function Movies() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {movies.map((movie) => (
-          <MoviesCard key={movie.id} movie={movie} />
+          <MoviesCard
+            key={movie.id}
+            movie={movie}
+            onDetails={setSelectedMovie}
+          />
         ))}
       </div>
+
+      {selectedMovie && (
+        <MovieDetailsModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </>
   );
 }
