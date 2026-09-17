@@ -7,6 +7,30 @@ export default function Movies() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
 
+  const handleSearch = async () => {
+    if (!search.trim()) {
+      return;
+    }
+    try {
+      setLoading(true);
+      setError("");
+
+      const url = await fetch(
+        `https://api.tvmaze.com/search/shows?q=${search}`,
+      );
+      if (!url.ok) {
+        throw new Error("Failed to search movies");
+      }
+      const data = await url.json();
+      const searchResults = data.map((item) => item.show);
+      setMovies(searchResults);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     const getMovies = async () => {
       try {
@@ -45,7 +69,10 @@ export default function Movies() {
             className="w-full bg-transparent px-5 py-3 text-white outline-none placeholder:text-gray-500"
           />
 
-          <button className="bg-yellow-400 px-6 font-semibold text-gray-950 transition hover:bg-yellow-300">
+          <button
+            onClick={handleSearch}
+            className="bg-yellow-400 px-6 font-semibold text-gray-950 transition hover:bg-yellow-300"
+          >
             Search
           </button>
         </div>
