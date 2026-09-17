@@ -14,3 +14,28 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Movie Explorer
+
+A responsive movie explorer application built with react, tailwind css and tvmaze API.
+
+## Features
+
+- Browse movies
+- Search Movies by title
+- View movie details in a model
+- Responsive design
+- Mobile friendly navbar
+- Movie rating and release display
+
+## Technologies Used
+
+- React
+- JavaScript
+- Tailwind CSS
+- react Router
+- Tvmaze api
+
+-- bash --
+npm install
+npm run dev
